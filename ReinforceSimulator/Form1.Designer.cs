@@ -30,11 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.WeaponBox = new System.Windows.Forms.PictureBox();
-            this.WeaponReinForce = new System.Windows.Forms.Label();
+            this.weaponReinForce = new System.Windows.Forms.Label();
             this.ReinforceBtn = new System.Windows.Forms.Button();
             this.percentLabel = new System.Windows.Forms.Label();
-            this.percent = new System.Windows.Forms.Label();
-            this.WeaponName = new System.Windows.Forms.Label();
+            this.weaponPercent = new System.Windows.Forms.Label();
+            this.weaponName = new System.Windows.Forms.Label();
+            this.weaponData = new System.Windows.Forms.Label();
+            this.cycle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.WeaponBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,14 +58,14 @@
             this.WeaponBox.TabIndex = 1;
             this.WeaponBox.TabStop = false;
             // 
-            // WeaponReinForce
+            // weaponReinForce
             // 
-            this.WeaponReinForce.AutoSize = true;
-            this.WeaponReinForce.Location = new System.Drawing.Point(278, 91);
-            this.WeaponReinForce.Name = "WeaponReinForce";
-            this.WeaponReinForce.Size = new System.Drawing.Size(184, 25);
-            this.WeaponReinForce.TabIndex = 2;
-            this.WeaponReinForce.Text = "WeaponReinforce";
+            this.weaponReinForce.AutoSize = true;
+            this.weaponReinForce.Location = new System.Drawing.Point(278, 91);
+            this.weaponReinForce.Name = "weaponReinForce";
+            this.weaponReinForce.Size = new System.Drawing.Size(179, 25);
+            this.weaponReinForce.TabIndex = 2;
+            this.weaponReinForce.Text = "weaponReinforce";
             // 
             // ReinforceBtn
             // 
@@ -74,6 +76,7 @@
             this.ReinforceBtn.TabIndex = 3;
             this.ReinforceBtn.Text = "강화";
             this.ReinforceBtn.UseVisualStyleBackColor = true;
+            this.ReinforceBtn.Click += new System.EventHandler(this.ReinforceBtn_Click);
             // 
             // percentLabel
             // 
@@ -84,35 +87,56 @@
             this.percentLabel.TabIndex = 4;
             this.percentLabel.Text = "강화 확률";
             // 
-            // percent
+            // weaponPercent
             // 
-            this.percent.AutoSize = true;
-            this.percent.Location = new System.Drawing.Point(61, 138);
-            this.percent.Name = "percent";
-            this.percent.Size = new System.Drawing.Size(155, 100);
-            this.percent.TabIndex = 5;
-            this.percent.Text = "성공 확률 : 100%\r\n유지 확률 : 0%\r\n하락 확률 : 0%\r\n파괴 확률 : 0%\r\n";
+            this.weaponPercent.AutoSize = true;
+            this.weaponPercent.Location = new System.Drawing.Point(61, 138);
+            this.weaponPercent.Name = "weaponPercent";
+            this.weaponPercent.Size = new System.Drawing.Size(161, 25);
+            this.weaponPercent.TabIndex = 5;
+            this.weaponPercent.Text = "weaponPercent";
             // 
-            // WeaponName
+            // weaponName
             // 
-            this.WeaponName.AutoSize = true;
-            this.WeaponName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WeaponName.Location = new System.Drawing.Point(300, 316);
-            this.WeaponName.Name = "WeaponName";
-            this.WeaponName.Size = new System.Drawing.Size(267, 42);
-            this.WeaponName.TabIndex = 6;
-            this.WeaponName.Text = "WeaponName";
+            this.weaponName.AutoSize = true;
+            this.weaponName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weaponName.Location = new System.Drawing.Point(300, 316);
+            this.weaponName.Name = "weaponName";
+            this.weaponName.Size = new System.Drawing.Size(259, 42);
+            this.weaponName.TabIndex = 6;
+            this.weaponName.Text = "weaponName";
+            // 
+            // weaponData
+            // 
+            this.weaponData.AutoSize = true;
+            this.weaponData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weaponData.Location = new System.Drawing.Point(49, 299);
+            this.weaponData.Name = "weaponData";
+            this.weaponData.Size = new System.Drawing.Size(177, 33);
+            this.weaponData.TabIndex = 7;
+            this.weaponData.Text = "weaponData";
+            // 
+            // cycle
+            // 
+            this.cycle.AutoSize = true;
+            this.cycle.Location = new System.Drawing.Point(602, 44);
+            this.cycle.Name = "cycle";
+            this.cycle.Size = new System.Drawing.Size(62, 25);
+            this.cycle.TabIndex = 8;
+            this.cycle.Text = "cycle";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.WeaponName);
-            this.Controls.Add(this.percent);
+            this.Controls.Add(this.cycle);
+            this.Controls.Add(this.weaponData);
+            this.Controls.Add(this.weaponName);
+            this.Controls.Add(this.weaponPercent);
             this.Controls.Add(this.percentLabel);
             this.Controls.Add(this.ReinforceBtn);
-            this.Controls.Add(this.WeaponReinForce);
+            this.Controls.Add(this.weaponReinForce);
             this.Controls.Add(this.WeaponBox);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -128,11 +152,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox WeaponBox;
-        private System.Windows.Forms.Label WeaponReinForce;
+        private System.Windows.Forms.Label weaponReinForce;
         private System.Windows.Forms.Button ReinforceBtn;
         private System.Windows.Forms.Label percentLabel;
-        private System.Windows.Forms.Label percent;
-        private System.Windows.Forms.Label WeaponName;
+        private System.Windows.Forms.Label weaponPercent;
+        private System.Windows.Forms.Label weaponName;
+        private System.Windows.Forms.Label weaponData;
+        private System.Windows.Forms.Label cycle;
     }
 }
 
