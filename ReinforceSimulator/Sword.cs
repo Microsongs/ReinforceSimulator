@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,24 +30,55 @@ namespace ReinforceSimulator
         //강화 실행
         public void Action()
         {
-            if (reinforcePercent.ReinForce() == true)
-                Reinforce++;
-            else
-                Reinforce--;
-            reinforcePercent.SetPercent(reinforce);
+            int rst = reinforcePercent.ReinForce();
+            if (rst == (int)Result.success)    //성공
+            {
+                reinforce++;
+            }
+            else if (rst == (int)Result.maintain)   //유지
+            {
+                reinforce = Reinforce;
+            }
+            else if(rst == (int)Result.down)    //하락
+            {
+                reinforce--;
+            }
+            else //파괴
+            {
+                reinforce = 0;
+            }
+            //Debug.WriteLine(reinforce);
+            weapondata.setData(reinforce);
+            reinforcePercent.SetPercent(reinforce); //다음 강화를 위한 퍼센트설정
         }
         //강화
+        
         public int Reinforce
         {
             get { return reinforce; }
+            /*
             set {
-                if (value > reinforce)
+                if (value == 0)     //파괴
+                {
+                    reinforce = 0;
+                }
+                else if (value > reinforce) //성공
+                {
                     reinforce++;
-                else
+                }
+                else if (value == reinforce)    //유지
+                {
+
+                }
+                else if (value > reinforce) //실패
+                {
                     reinforce--;
+                }
                 weapondata.setData(reinforce);
             }
+            */
         }
+        
         //공격력
         public string ATK()
         {
@@ -85,8 +117,14 @@ namespace ReinforceSimulator
             public void setData(int reinforce)
             {
                 int temp = reinforce - frontReinforce;
+                //파괴
+                if(reinforce == 0)
+                {
+                    strength = 0;
+                    attack = 5;
+                }
                 //성공
-                if (temp >= 1)
+                else if (temp >= 1)
                 {
                     if (reinforce >= 10)
                     {

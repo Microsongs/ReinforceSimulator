@@ -34,7 +34,7 @@ namespace ReinforceSimulator
         {
             weaponName.Text = sword.Name;   //무기 이름 변경
             weaponReinForce.Text = "+ " + sword.Reinforce.ToString(); //무기 강화수치 불러오기
-            System.Diagnostics.Debug.WriteLine(sword.STR());
+            //System.Diagnostics.Debug.WriteLine(sword.STR());
             weaponData.Text = "힘 : " + sword.STR() + "\n" + "공격력 : " + sword.ATK();
             weaponPercent.Text = sword.percentData();
             cycle.Text = "강화 횟수 : " + mycycle.ToString();
@@ -47,20 +47,6 @@ namespace ReinforceSimulator
 
         private void ReinforceBtn_Click(object sender, EventArgs e)
         {
-            //System.Diagnostics.Debug.WriteLine(sword.Reinforce);
-            //mypercent.SetPercent(sword.Reinforce);
-            /*
-            bool check = mypercent.ReinForce();
-            //System.Diagnostics.Debug.WriteLine(check);
-            if(check == true)
-            {
-                sword.Reinforce++;
-            }
-            else
-            {
-                sword.Reinforce--;
-            }
-            */
             sword.Action();
             mycycle++;
             TxtSetting();
