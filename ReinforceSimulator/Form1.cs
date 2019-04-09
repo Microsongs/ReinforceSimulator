@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace ReinforceSimulator
         public Form1()
         {
             InitializeComponent();
-
+            
             InitializeForm();
         }
         private void InitializeForm()
@@ -47,9 +48,19 @@ namespace ReinforceSimulator
 
         private void ReinforceBtn_Click(object sender, EventArgs e)
         {
+            Working workingdata = new Working();
+            Thread Rimg = new Thread(()=>ReinforceImg(workingdata));
+            Rimg.Start();
+            Thread.Sleep(1000);
+            //workingdata.Close();
             sword.Action();
             mycycle++;
             TxtSetting();
+        }
+        private void ReinforceImg(Working data)
+        {
+            data.Show();
+            Thread.Sleep(1000);
         }
     }
 }
